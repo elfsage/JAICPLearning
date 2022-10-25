@@ -1,7 +1,7 @@
 {
   "project" : {
-    "id" : "sedyh_bot-1000025114-EDC",
-    "name" : "sedyh_bot-1000025114-EDC",
+    "id" : "kats_andrew-1000025114-cur",
+    "name" : "kats_andrew-1000025114-cur",
     "folder" : "/jaicp"
   },
   "settings" : {
@@ -16,7 +16,7 @@
     "shared" : false
   },
   "intents" : [ {
-    "id" : 13108257,
+    "id" : 13136419,
     "path" : "/пока",
     "enabled" : true,
     "shared" : false,
@@ -28,7 +28,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13108258,
+    "id" : 13136420,
     "path" : "/привет",
     "enabled" : true,
     "shared" : false,

@@ -17,7 +17,7 @@ theme: /
             a: Приветствую!
         go!: /Service/SuggestHelp
 
-    state: NoMatch
+    state: NoMatch || noContext = true
         event!: noMatch
         a: Простите, я не понял. Переформулируйте, пожалуйста, ваш запрос.
         
