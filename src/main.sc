@@ -9,6 +9,7 @@ require: localPatterns.sc
 init:
     bind("postProcess", function($context) {
         log("%%%%%" + $context.currentState)
+        $context.session.lastState = $context.currentState;
     })
 
 theme: /
@@ -39,6 +40,7 @@ theme: /
     state: NoMatch || noContext = true
         event!: noMatch
         a: Простите, я не понял. Переформулируйте, пожалуйста, ваш запрос.
+        go!: {{ $session.lastState }}
         
 theme: /Service
     
