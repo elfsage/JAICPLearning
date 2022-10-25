@@ -10,11 +10,19 @@ theme: /
 
     state: Start
         q!: $regex</start>
+        q: $regex</start> || fromState = /Phone/Ask
         q: ($hi/$hello)
         random:
             a: Здравствуйте!
             a: Добрый день!
             a: Приветствую!
+        script:
+            $response.replies =  $response.replies || [];
+            $response.replies.push({
+                type: "image",
+                imageUrl: "https://trendymen.ru/images/article1/120294/attachments/44.jpg",
+                text: "Самолетик"
+                })
         go!: /Service/SuggestHelp
 
     state: NoMatch || noContext = true
@@ -24,6 +32,7 @@ theme: /
 theme: /Service
     
     state: SuggestHelp
+        q: Передумал || fromState = /Phone/Ask
         a: Давайте я помогу вам купить билеты на самолет, хорошо?
         buttons:
             "Да"
@@ -42,15 +51,34 @@ theme: /Phone
     
     state: Ask || modal = true
         a: Пожалуйста, укажите номер телефона в формате +790000000000
+        buttons:
+            "79021234567"
         
         state: GetPhone
-            q: 790000000000
+            q: $phone
             a: Спасибо
-            go!: /Phone/Ok
+            script:
+                log("@@@@" + toPrettyString($parseTree))
+            go!: /Phone/Confirm
             
         state: LocalCatchAll
             event: noMatch
             a: Пожалуйста, укажите номер телефона
+            buttons:
+                "Передумал"
             
-    state: Ok
-        a: ОК
+    state: Confirm
+        script:
+            $temp.phone = $parseTree._phone;
+        a: Ваш номер {{ $temp.phone }}, верно?
+        buttons:
+            "Да"
+            "Нет"
+        
+        state: Yes
+            q: (да/верно)
+            a: Отлично!
+            
+        state: No
+            q: (нет/не верно)
+            a: ...
