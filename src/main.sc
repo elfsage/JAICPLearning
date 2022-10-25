@@ -16,6 +16,7 @@ theme: /
             a: Здравствуйте!
             a: Добрый день!
             a: Приветствую!
+        a: Меня зовут {{ $injector.botName }}
         script:
             $response.replies =  $response.replies || [];
             $response.replies.push({
@@ -24,6 +25,12 @@ theme: /
                 text: "Самолетик"
                 })
         go!: /Service/SuggestHelp
+
+    state: Reset
+        q!: $regex</reset>
+        script:
+            $client = {};
+            $session = {};
 
     state: NoMatch || noContext = true
         event!: noMatch
