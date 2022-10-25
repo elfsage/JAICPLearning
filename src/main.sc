@@ -41,7 +41,10 @@ theme: /Service
         state: Accepted
             q: (да/давай/хорошо)
             a: Отлично!
-            go!: /Phone/Ask
+            if: $client.phone
+                go!: /Phone/Confirm
+            else:
+                go!: /Phone/Ask
             
         state: Rejected
             q: (нет/не надо)
@@ -69,16 +72,18 @@ theme: /Phone
             
     state: Confirm
         script:
-            $temp.phone = $parseTree._phone;
-        a: Ваш номер {{ $temp.phone }}, верно?
+            $session.suggestedPhone = $parseTree._phone || $client.phone;
+        a: Ваш номер {{ $session.suggestedPhone }}, верно?
         buttons:
             "Да"
             "Нет"
         
         state: Yes
             q: (да/верно)
+            script:
+                $client.phone = $session.suggestedPhone
             a: Отлично!
             
         state: No
             q: (нет/не верно)
-            a: ...
+            go!: /Phone/Ask
