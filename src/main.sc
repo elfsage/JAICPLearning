@@ -6,8 +6,12 @@ require: patterns.sc
 
 require: localPatterns.sc
 
-theme: /
+init:
+    bind("postProcess", function($context) {
+        log("%%%%%" + $context.currentState)
+    })
 
+theme: /
     state: Start
         q!: $regex</start>
         q: $regex</start> || fromState = /Phone/Ask
@@ -16,7 +20,7 @@ theme: /
             a: Здравствуйте!
             a: Добрый день!
             a: Приветствую!
-        a: Меня зовут {{ $injector.botName }}
+        a: Меня зовут {{ capitalize($injector.botName) }}
         script:
             $response.replies =  $response.replies || [];
             $response.replies.push({

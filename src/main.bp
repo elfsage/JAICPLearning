@@ -1,0 +1,27 @@
+{
+  "positions" : [ {
+    "id" : "/Start",
+    "x" : 0,
+    "y" : 0
+  }, {
+    "id" : "/Reset",
+    "x" : 0,
+    "y" : 1000
+  }, {
+    "id" : "/NoMatch",
+    "x" : 0,
+    "y" : 1423
+  }, {
+    "id" : "/Service/SuggestHelp",
+    "x" : 0,
+    "y" : 1867
+  }, {
+    "id" : "/Phone/Ask",
+    "x" : 0,
+    "y" : 2107
+  }, {
+    "id" : "/Phone/Confirm",
+    "x" : 0,
+    "y" : 2347
+  } ]
+}
