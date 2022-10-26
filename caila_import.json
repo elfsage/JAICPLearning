@@ -16,6 +16,25 @@
     "shared" : false
   },
   "intents" : [ {
+    "id" : 13169257,
+    "path" : "/Ticket",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Хочу купить билет"
+    }, {
+      "text" : "Мне нужен билетик из Москвы в СПБ"
+    }, {
+      "text" : "Хочу полететь завтра в Сочи"
+    }, {
+      "text" : "Хочу на море"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ "* ~билет *" ],
+    "priority" : 0
+  }, {
     "id" : 13136419,
     "path" : "/пока",
     "enabled" : true,
@@ -30,6 +49,7 @@
   }, {
     "id" : 13136420,
     "path" : "/привет",
+    "answer" : "Приветик!",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
@@ -38,6 +58,7 @@
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
     "priority" : 0
   } ],
   "entities" : [ ],

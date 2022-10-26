@@ -13,11 +13,15 @@ init:
     })
 
 theme: /
+    
+    state: StartIntent
+        intent: /привет
+        a: {{ $context.intent.answer }}
 
     state: Start
         q!: $regex</start>
         q: $regex</start> || fromState = /Phone/Ask
-        q: ($hi/$hello)
+        # q: ($hi/$hello)
         script:
             $jsapi.startSession()
         random:
