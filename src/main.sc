@@ -118,3 +118,13 @@ theme: /Discount
             var answer = "Вам не очень крупно повезло!"
             $reactions.answer(answer);
         a: Сегодня {{ $temp.date }} у нас скидка 5%
+        
+theme: /Travel
+    
+    state: Ticket
+        intent!: /Ticket
+        a: Вы хотите купить билет!
+    
+    state: Match
+        event!: match
+        a: Знаю-знаю: {{ $context.intent.answer }}
