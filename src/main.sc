@@ -13,10 +13,13 @@ init:
     })
 
 theme: /
+
     state: Start
         q!: $regex</start>
         q: $regex</start> || fromState = /Phone/Ask
         q: ($hi/$hello)
+        script:
+            $jsapi.startSession()
         random:
             a: Здравствуйте!
             a: Добрый день!
@@ -96,7 +99,18 @@ theme: /Phone
             script:
                 $client.phone = $session.suggestedPhone
             a: Отлично!
+            go!: /Discount/Inform
             
         state: No
             q: (нет/не верно)
             go!: /Phone/Ask
+            
+theme: /Discount
+    
+    state: Inform
+        script:
+            $temp.date = $jsapi.dateForZone("Europe/Samara","dd.MM");
+            
+            var answer = "Вам не очень крупно повезло!"
+            $reactions.answer(answer);
+        a: Сегодня {{ $temp.date }} у нас скидка 5%
