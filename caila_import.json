@@ -16,7 +16,7 @@
     "shared" : false
   },
   "intents" : [ {
-    "id" : 13169257,
+    "id" : 13173256,
     "path" : "/Ticket",
     "enabled" : true,
     "shared" : false,
@@ -35,7 +35,7 @@
     "patterns" : [ "* ~билет *" ],
     "priority" : 0
   }, {
-    "id" : 13136419,
+    "id" : 13173257,
     "path" : "/пока",
     "enabled" : true,
     "shared" : false,
@@ -47,7 +47,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13136420,
+    "id" : 13173258,
     "path" : "/привет",
     "answer" : "Приветик!",
     "enabled" : true,
