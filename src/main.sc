@@ -11,10 +11,10 @@ require: city/cities-ru.csv
     name = Cities
     var = Cities
 
-require: discount.yaml
+require: dict/discount.yaml
     var = discountInfo
     
-require: functions.js
+require: scripts/functions.js
 
 init:
     bind("postProcess", function($context){

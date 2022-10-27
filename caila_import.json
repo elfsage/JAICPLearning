@@ -1,7 +1,7 @@
 {
   "project" : {
-    "id" : "bot_sedykh-1000025114-sik",
-    "name" : "bot_sedykh-1000025114-sik",
+    "id" : "kats_andrew-1000025114-cur",
+    "name" : "kats_andrew-1000025114-cur",
     "folder" : "/jaicp"
   },
   "settings" : {
@@ -17,7 +17,7 @@
     "shared" : false
   },
   "intents" : [ {
-    "id" : 13170254,
+    "id" : 13191586,
     "path" : "/пока",
     "enabled" : true,
     "shared" : false,
@@ -29,7 +29,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13170255,
+    "id" : 13191587,
     "path" : "/привет",
     "enabled" : true,
     "shared" : false,
@@ -41,7 +41,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13171345,
+    "id" : 13191588,
     "path" : "/Operator",
     "enabled" : true,
     "shared" : false,
@@ -60,7 +60,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13171437,
+    "id" : 13191589,
     "path" : "/Departure",
     "enabled" : true,
     "shared" : false,
@@ -71,7 +71,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13171462,
+    "id" : 13191590,
     "path" : "/Ticket",
     "enabled" : true,
     "shared" : false,
@@ -97,21 +97,24 @@
       "name" : "departure",
       "entity" : "Departure",
       "required" : true,
-      "prompts" : [ "Откуда вы хотите лететь?" ]
+      "prompts" : [ "Откуда вы хотите лететь?" ],
+      "array" : false
     }, {
       "name" : "destination",
       "entity" : "Destination",
       "required" : true,
-      "prompts" : [ "Куда вы хотите лететь?", "В какой город летите?" ]
+      "prompts" : [ "Куда вы хотите лететь?", "В какой город летите?" ],
+      "array" : false
     }, {
       "name" : "time",
       "entity" : "duckling.time",
       "required" : true,
-      "prompts" : [ "Когда летим?", "На какой день брать билет?" ]
+      "prompts" : [ "Когда летим?", "На какой день брать билет?" ],
+      "array" : false
     } ],
     "priority" : 0
   }, {
-    "id" : 13169281,
+    "id" : 13191591,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Какой у вас номер телефона?",
     "enabled" : true,
     "shared" : false,
@@ -136,7 +139,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169282,
+    "id" : 13191592,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Где вы находитесь?",
     "enabled" : true,
     "shared" : false,
@@ -161,7 +164,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169284,
+    "id" : 13191593,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Как связаться со службой поддержки?",
     "enabled" : true,
     "shared" : false,
@@ -186,7 +189,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169285,
+    "id" : 13191594,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/По каким дням вы работаете?",
     "enabled" : true,
     "shared" : false,
@@ -209,7 +212,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169286,
+    "id" : 13191595,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Как вас найти в интернете?",
     "enabled" : true,
     "shared" : false,
@@ -230,7 +233,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169287,
+    "id" : 13191596,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Есть ли у вас мобильное приложение?",
     "enabled" : true,
     "shared" : false,
@@ -255,7 +258,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169288,
+    "id" : 13191597,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Какая у вас электронная почта?",
     "enabled" : true,
     "shared" : false,
@@ -278,7 +281,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169289,
+    "id" : 13191598,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Хочу сотрудничать",
     "enabled" : true,
     "shared" : false,
@@ -301,7 +304,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169292,
+    "id" : 13191599,
     "path" : "/KnowledgeBase/FAQ.Контакты",
     "enabled" : true,
     "shared" : false,
@@ -311,7 +314,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13169318,
+    "id" : 13191600,
     "path" : "/Пробемы в мобильном приложении",
     "enabled" : true,
     "shared" : false,
@@ -327,7 +330,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13169283,
+    "id" : 13191601,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких городах есть офисы?",
     "answer" : "Во всех городах есть офисы!",
     "enabled" : true,
@@ -351,7 +354,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13175278,
+    "id" : 13191602,
     "path" : "/Новый интент 1",
     "enabled" : true,
     "shared" : false,
@@ -361,7 +364,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13169320,
+    "id" : 13191603,
     "path" : "/Новый интент 2",
     "enabled" : true,
     "shared" : false,
@@ -371,7 +374,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13175078,
+    "id" : 13191604,
     "path" : "/Как активировать карту",
     "enabled" : true,
     "shared" : false,
@@ -393,7 +396,7 @@
     },
     "priority" : 0
   }, {
-    "id" : 13172291,
+    "id" : 13191605,
     "path" : "/Return",
     "enabled" : true,
     "shared" : false,
@@ -408,7 +411,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169291,
+    "id" : 13191606,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких странах есть офисы?",
     "answer" : "Вездеее!",
     "enabled" : true,
@@ -432,7 +435,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13169290,
+    "id" : 13191607,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/В какое время вы работаете?",
     "answer" : "Всегдааа!",
     "enabled" : true,
@@ -460,7 +463,7 @@
   } ],
   "entities" : [ {
     "entity" : {
-      "id" : 200642,
+      "id" : 200355,
       "name" : "Agent",
       "enabled" : true,
       "shared" : false,
@@ -474,19 +477,19 @@
       "hidden" : false
     },
     "records" : [ {
-      "id" : 15590182,
+      "id" : 15631560,
       "type" : "pattern",
       "rule" : [ "~агент" ],
       "value" : ""
     }, {
-      "id" : 15590183,
+      "id" : 15631561,
       "type" : "synonyms",
       "rule" : [ "оператор", "сотрудник" ],
       "value" : ""
     } ]
   }, {
     "entity" : {
-      "id" : 200146,
+      "id" : 200356,
       "name" : "Animal",
       "enabled" : true,
       "shared" : false,
@@ -500,24 +503,24 @@
       "hidden" : false
     },
     "records" : [ {
-      "id" : 15590184,
+      "id" : 15631562,
       "type" : "synonyms",
       "rule" : [ "большой хомяк" ],
       "value" : ""
     }, {
-      "id" : 15590185,
+      "id" : 15631563,
       "type" : "synonyms",
       "rule" : [ "кошка", "кот" ],
       "value" : ""
     }, {
-      "id" : 15590186,
+      "id" : 15631564,
       "type" : "synonyms",
       "rule" : [ "лысый кошка" ],
       "value" : ""
     } ]
   }, {
     "entity" : {
-      "id" : 200193,
+      "id" : 200357,
       "name" : "classRule_3010",
       "enabled" : true,
       "shared" : false,
@@ -531,14 +534,14 @@
       "hidden" : true
     },
     "records" : [ {
-      "id" : 15590648,
+      "id" : 15631565,
       "type" : "synonyms",
       "rule" : [ "возврат" ],
       "value" : ""
     } ]
   }, {
     "entity" : {
-      "id" : 200645,
+      "id" : 200358,
       "name" : "Departure",
       "enabled" : true,
       "shared" : false,
@@ -552,14 +555,14 @@
       "hidden" : false
     },
     "records" : [ {
-      "id" : 15598382,
+      "id" : 15631566,
       "type" : "pattern",
       "rule" : [ "@pymorphy.geox" ],
       "value" : ""
     } ]
   }, {
     "entity" : {
-      "id" : 200650,
+      "id" : 200359,
       "name" : "Destination",
       "enabled" : true,
       "shared" : false,
@@ -573,7 +576,7 @@
       "hidden" : false
     },
     "records" : [ {
-      "id" : 15598383,
+      "id" : 15631567,
       "type" : "pattern",
       "rule" : [ "@pymorphy.geox" ],
       "value" : ""
