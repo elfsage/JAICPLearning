@@ -6,21 +6,29 @@ require: patterns.sc
 
 require: localPatterns.sc
 
-require: dict/discount.yaml
-    var = discountInfo
-    
 require: city/cities-ru.csv
     module = sys.zb-common
     name = Cities
     var = Cities
+
+require: discount.yaml
+    var = discountInfo
     
+require: functions.js
 
 init:
     bind("postProcess", function($context){
         log("+++++++" + $context.currentState);
         $context.session.lastState = $context.currentState;
     });
-        
+    
+    $global.$converters = $global.$converters || {};
+    
+    $global.$converters.cityConverters = function (parseTree){
+        var id = parseTree.Cities[0].value;
+        return Cities[id].value;    
+    }
+            
 theme: /
     
     state: Start
@@ -115,28 +123,42 @@ theme: /Discount
     
     state: Inform
         script:
-            var dayOfWeek = $jsapi.dateForZone("Europe/Moscow","EEEE");
-            var discount = discountInfo[dayOfWeek];
-            if (discount) {
+        
+            var nowDayOfWeek = $jsapi.dateForZone("Europe/Moscow","EEEE");
+            var discount = discountInfo[nowDayOfWeek];
+            if (discount){
                 $temp.date = $jsapi.dateForZone("Europe/Moscow","dd.MM");
-                var answer = "Вам крупно повезло! Сегодня " + $temp.date + " действует скидка"
+                var answer = "Вам крупно повезло. Сегодня " + $temp.date + " действует скидка"
                 $reactions.answer(answer);
                 $reactions.answer(discount);
             }
+            
         go!: /Travel/Departure
-
+        
 theme: /Travel
     
     state: Departure
-        a: Укажите город отправления
-        
+        a:Назовите пожалуйста город отправления
+            
         state: Get
             q: * $City *
             script:
-                log("@@@@@" + toPrettyString($parseTree.City));
-                var id = $parseTree.City[0].value;
-                $session.departureCity = Cities[id].value.name;
-            a: Отправляемся из города {{ $session.departureCity }}
+                log("///////////////////" + toPrettyString($parseTree.City));
+                $session.departureCity = $parseTree._City;
+            a: итак, город отправления: {{$session.departureCity.name}}
+            go!: /Travel/Destination
+            
+    state: Destination
+        a:Назовите пожалуйста город прибытия
+            
+        state: Get
+            q: * $City *
+            script:
+                log("///////////////////" + toPrettyString($parseTree.City));
+                $session.destinationCity = $parseTree._City;
+            a: итак, город прибытия: {{$session.destinationCity.name}} 
+            go!: /Weather/Current
+            
     
     state: Ticket
         intent!: /Ticket
@@ -149,4 +171,12 @@ theme: /Travel
         
     state: Match
         event!: match
-        a: Знаю ответ:{{$context.intent.answer}}       
+        a: Знаю ответ:{{$context.intent.answer}}   
+        
+theme: /Weather
+    
+    state: Current
+        script:
+            $temp.weather = getCurrentWeather($session.destinationCity.lat, $session.destinationCity.lon);
+        if: $temp.weather
+            a: Сейчас в городе {{$session.destinationCity.name}} {{$temp.weather.descr}}, {{$temp.weather.temp}}C
