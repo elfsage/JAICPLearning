@@ -1,22 +1,117 @@
 {
   "project" : {
-    "id" : "kats_andrew-1000025114-cur",
-    "name" : "kats_andrew-1000025114-cur",
+    "id" : "bot_sedykh-1000025114-sik",
+    "name" : "bot_sedykh-1000025114-sik",
     "folder" : "/jaicp"
   },
   "settings" : {
     "language" : "ru",
-    "spellingCorrection" : false,
+    "spellingCorrection" : true,
     "classificationAlgorithm" : "sts",
     "timezone" : "Europe/Moscow",
     "extendedSettings" : {
       "tokenizerEngine" : "mystem",
+      "allowedPatterns" : [ "Agent" ],
       "useShared" : false
     },
     "shared" : false
   },
   "intents" : [ {
-    "id" : 13173293,
+    "id" : 13170254,
+    "path" : "/пока",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "пока"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13170255,
+    "path" : "/привет",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "привет"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13171345,
+    "path" : "/Operator",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "позови оператора"
+    }, {
+      "text" : "мне нужен человек"
+    }, {
+      "text" : "мне нужен @Agent"
+    }, {
+      "text" : "позови @Agent"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 13171437,
+    "path" : "/Departure",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 13171462,
+    "path" : "/Ticket",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "хочу полететь в @Destination из @Departure"
+    }, {
+      "text" : "хочу полететь в @Departure"
+    }, {
+      "text" : "купить билет"
+    }, {
+      "text" : "хочу билетик"
+    }, {
+      "text" : "хочу билет"
+    } ],
+    "classificationRules" : {
+      "refs" : [ {
+        "entityName" : "classRule_3010",
+        "predicate" : "CONTAINS_NOT"
+      } ]
+    },
+    "patterns" : [ "* ~билет *" ],
+    "slots" : [ {
+      "name" : "departure",
+      "entity" : "Departure",
+      "required" : true,
+      "prompts" : [ "Откуда вы хотите лететь?" ]
+    }, {
+      "name" : "destination",
+      "entity" : "Destination",
+      "required" : true,
+      "prompts" : [ "Куда вы хотите лететь?", "В какой город летите?" ]
+    }, {
+      "name" : "time",
+      "entity" : "duckling.time",
+      "required" : true,
+      "prompts" : [ "Когда летим?", "На какой день брать билет?" ]
+    } ],
+    "priority" : 0
+  }, {
+    "id" : 13169281,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Какой у вас номер телефона?",
     "enabled" : true,
     "shared" : false,
@@ -41,7 +136,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173294,
+    "id" : 13169282,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Где вы находитесь?",
     "enabled" : true,
     "shared" : false,
@@ -66,7 +161,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173296,
+    "id" : 13169284,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Как связаться со службой поддержки?",
     "enabled" : true,
     "shared" : false,
@@ -91,7 +186,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173297,
+    "id" : 13169285,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/По каким дням вы работаете?",
     "enabled" : true,
     "shared" : false,
@@ -114,7 +209,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173298,
+    "id" : 13169286,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Как вас найти в интернете?",
     "enabled" : true,
     "shared" : false,
@@ -135,7 +230,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173299,
+    "id" : 13169287,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Есть ли у вас мобильное приложение?",
     "enabled" : true,
     "shared" : false,
@@ -160,7 +255,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173300,
+    "id" : 13169288,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Какая у вас электронная почта?",
     "enabled" : true,
     "shared" : false,
@@ -183,7 +278,7 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173301,
+    "id" : 13169289,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/Хочу сотрудничать",
     "enabled" : true,
     "shared" : false,
@@ -206,8 +301,140 @@
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "id" : 13173302,
+    "id" : 13169292,
+    "path" : "/KnowledgeBase/FAQ.Контакты",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13169318,
+    "path" : "/Пробемы в мобильном приложении",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Не могу совершить перевод на карту другого банка, вылетает ошибка и операция не выполнена"
+    }, {
+      "text" : "Не могу в приложении перевести средства между своими считами."
+    }, {
+      "text" : "Не могу сделать платеж в моб приложении"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13169283,
+    "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких городах есть офисы?",
+    "answer" : "Во всех городах есть офисы!",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "в каких регионах у вас есть филиалы"
+    }, {
+      "text" : " вы открыты в разных городах"
+    }, {
+      "text" : "в каких городах можно вас найти"
+    }, {
+      "text" : "в каких регионах вы представлены"
+    }, {
+      "text" : "вы есть не в Москве?"
+    }, {
+      "text" : "В каких городах есть офисы?"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 13175278,
+    "path" : "/Новый интент 1",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13169320,
+    "path" : "/Новый интент 2",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13175078,
+    "path" : "/Как активировать карту",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "Как активировать карту через банк онлайн??"
+    }, {
+      "text" : "Как активировать карту в банкомате?"
+    }, {
+      "text" : "Как активировать карту без банкомата"
+    }, {
+      "text" : "Как мне активировать карту если был перевыпуск в связи со сменой фамилии?"
+    }, {
+      "text" : "Добрый день. Как я могу активировать свою карту?"
+    }, {
+      "text" : "Добрый день, Олег. Как я могу активировать свою карту?"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
+    "id" : 13172291,
+    "path" : "/Return",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "оформить возврат"
+    }, {
+      "text" : "вернуть билет"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 13169291,
+    "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких странах есть офисы?",
+    "answer" : "Вездеее!",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "в каких странах открыты ваши офисы"
+    }, {
+      "text" : "страны где вы представлены"
+    }, {
+      "text" : "где есть представительства в мире"
+    }, {
+      "text" : "международные филиалы"
+    }, {
+      "text" : "где офисы за границей"
+    }, {
+      "text" : "В каких странах есть офисы?"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 13169290,
     "path" : "/KnowledgeBase/FAQ.Контакты/Root/В какое время вы работаете?",
+    "answer" : "Всегдааа!",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
@@ -230,115 +457,133 @@
     },
     "patterns" : [ ],
     "priority" : 0
-  }, {
-    "id" : 13173304,
-    "path" : "/KnowledgeBase/FAQ.Контакты",
-    "enabled" : true,
-    "shared" : false,
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "priority" : 0
-  }, {
-    "id" : 13173295,
-    "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких городах есть офисы?",
-    "answer" : "Вообще везде",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ {
-      "text" : "в каких регионах у вас есть филиалы"
-    }, {
-      "text" : " вы открыты в разных городах"
-    }, {
-      "text" : "в каких городах можно вас найти"
-    }, {
-      "text" : "в каких регионах вы представлены"
-    }, {
-      "text" : "вы есть не в Москве?"
-    }, {
-      "text" : "В каких городах есть офисы?"
-    } ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "patterns" : [ ],
-    "priority" : 0
-  }, {
-    "id" : 13173303,
-    "path" : "/KnowledgeBase/FAQ.Контакты/Root/В каких странах есть офисы?",
-    "answer" : "Во всех",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ {
-      "text" : "в каких странах открыты ваши офисы"
-    }, {
-      "text" : "страны где вы представлены"
-    }, {
-      "text" : "где есть представительства в мире"
-    }, {
-      "text" : "международные филиалы"
-    }, {
-      "text" : "где офисы за границей"
-    }, {
-      "text" : "В каких странах есть офисы?"
-    } ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "patterns" : [ ],
-    "priority" : 0
-  }, {
-    "id" : 13173256,
-    "path" : "/Ticket",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ {
-      "text" : "Хочу купить билет"
-    }, {
-      "text" : "Мне нужен билетик из Москвы в СПБ"
-    }, {
-      "text" : "Хочу полететь завтра в Сочи"
-    }, {
-      "text" : "Хочу на море"
-    } ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "patterns" : [ "* ~билет *" ],
-    "priority" : 0
-  }, {
-    "id" : 13173257,
-    "path" : "/пока",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ {
-      "text" : "пока"
-    } ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "priority" : 0
-  }, {
-    "id" : 13173258,
-    "path" : "/привет",
-    "answer" : "Приветик!",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ {
-      "text" : "привет"
-    } ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
-    "patterns" : [ ],
-    "priority" : 0
   } ],
-  "entities" : [ ],
-  "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
+  "entities" : [ {
+    "entity" : {
+      "id" : 200642,
+      "name" : "Agent",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : true,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "id" : 15590182,
+      "type" : "pattern",
+      "rule" : [ "~агент" ],
+      "value" : ""
+    }, {
+      "id" : 15590183,
+      "type" : "synonyms",
+      "rule" : [ "оператор", "сотрудник" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "id" : 200146,
+      "name" : "Animal",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "id" : 15590184,
+      "type" : "synonyms",
+      "rule" : [ "большой хомяк" ],
+      "value" : ""
+    }, {
+      "id" : 15590185,
+      "type" : "synonyms",
+      "rule" : [ "кошка", "кот" ],
+      "value" : ""
+    }, {
+      "id" : 15590186,
+      "type" : "synonyms",
+      "rule" : [ "лысый кошка" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "id" : 200193,
+      "name" : "classRule_3010",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : true
+    },
+    "records" : [ {
+      "id" : 15590648,
+      "type" : "synonyms",
+      "rule" : [ "возврат" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "id" : 200645,
+      "name" : "Departure",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "id" : 15598382,
+      "type" : "pattern",
+      "rule" : [ "@pymorphy.geox" ],
+      "value" : ""
+    } ]
+  }, {
+    "entity" : {
+      "id" : 200650,
+      "name" : "Destination",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : false,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "id" : 15598383,
+      "type" : "pattern",
+      "rule" : [ "@pymorphy.geox" ],
+      "value" : ""
+    } ]
+  } ],
+  "enabledSystemEntities" : [ "mystem.geo", "pymorphy.geox", "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
   "spellerDictionary" : [ ],
   "systemEntities" : [ {
     "name" : "mystem.geo",
-    "enabled" : false
+    "enabled" : true
   }, {
     "name" : "mystem.persn",
     "enabled" : false
@@ -377,7 +622,7 @@
     "enabled" : false
   }, {
     "name" : "pymorphy.geox",
-    "enabled" : false
+    "enabled" : true
   }, {
     "name" : "pymorphy.orgn",
     "enabled" : false

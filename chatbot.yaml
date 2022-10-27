@@ -8,10 +8,9 @@ language: ru
 tests:
   include:
     - test.xml
-
-injector:
-  botName: антуанетта
-
+    
+injector: 
+    botName: наталья
 sts:
     noMatchThreshold: 0.2
 

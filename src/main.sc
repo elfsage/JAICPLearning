@@ -7,52 +7,46 @@ require: patterns.sc
 require: localPatterns.sc
 
 init:
-    bind("postProcess", function($context) {
-        log("%%%%%" + $context.currentState)
+    bind("postProcess", function($context){
+        log("+++++++" + $context.currentState);
         $context.session.lastState = $context.currentState;
-    })
-
+    });
+        
 theme: /
     
-    state: StartIntent
-        intent: /привет
-        a: {{ $context.intent.answer }}
-
     state: Start
         q!: $regex</start>
-        q: $regex</start> || fromState = /Phone/Ask
-        # q: ($hi/$hello)
+        q: ($hi/$hello)
         script:
             $jsapi.startSession()
         random:
             a: Здравствуйте!
             a: Добрый день!
             a: Приветствую!
-        a: Меня зовут {{ capitalize($injector.botName) }}
+        a: Меня зовут {{ capitalize($injector.botName) }}.
         script:
-            $response.replies =  $response.replies || [];
+            $response.replies = $response.replies || [];
             $response.replies.push({
                 type: "image",
-                imageUrl: "https://trendymen.ru/images/article1/120294/attachments/44.jpg",
-                text: "Самолетик"
-                })
+                imageUrl: "https://st.depositphotos.com/1144687/3421/i/600/depositphotos_34217943-stock-photo-airport-interior.jpg",
+                text: "Аэропорт"})
         go!: /Service/SuggestHelp
 
     state: Reset
         q!: $regex</reset>
-        script:
+        script: 
             $client = {};
             $session = {};
-
+    
     state: NoMatch || noContext = true
         event!: noMatch
         a: Простите, я не понял. Переформулируйте, пожалуйста, ваш запрос.
-        go!: {{ $session.lastState }}
+        go!: {{$session.lastState}}
         
 theme: /Service
     
     state: SuggestHelp
-        q: Передумал || fromState = /Phone/Ask
+        q: отмена || fromState = /Phone/Ask
         a: Давайте я помогу вам купить билеты на самолет, хорошо?
         buttons:
             "Да"
@@ -73,49 +67,48 @@ theme: /Service
 theme: /Phone
     
     state: Ask || modal = true
-        a: Пожалуйста, укажите номер телефона в формате +790000000000
+        a: Для продолжения напишите, пожалуйста, ваш номер телефона в формате 79000000000
         buttons:
-            "79021234567"
+            "Отмена"
         
         state: GetPhone
-            q: $phone
-            a: Спасибо
+            q: $phone 
+            a: Спасибо.
             script:
-                log("@@@@" + toPrettyString($parseTree))
+                log("@@@@" + toPrettyString($parseTree));
+            #a: {{$parseTree._phone}}
             go!: /Phone/Confirm
-            
+                
         state: LocalCatchAll
-            event: noMatch
-            a: Пожалуйста, укажите номер телефона
-            buttons:
-                "Передумал"
+            event!: noMatch
+            a: Напишите пожалйста номер телефона.
             
     state: Confirm
         script:
-            $session.suggestedPhone = $parseTree._phone || $client.phone;
-        a: Ваш номер {{ $session.suggestedPhone }}, верно?
+            $session.probablyPhone = $parseTree._phone || $client.phone;
+        a: Ваш номер телефона {{$session.probablyPhone}}, верно?
         buttons:
             "Да"
             "Нет"
         
         state: Yes
-            q: (да/верно)
+            q: (да/давай/хорошо)
             script:
-                $client.phone = $session.suggestedPhone
-            a: Отлично!
+                $client.phone = $session.probablyPhone;
+            a: Хорошо
             go!: /Discount/Inform
             
         state: No
-            q: (нет/не верно)
-            go!: /Phone/Ask
+            q: (нет/не надо)
+            go: /Phone/Ask
             
 theme: /Discount
     
     state: Inform
         script:
-            $temp.date = $jsapi.dateForZone("Europe/Samara","dd.MM");
+            $temp.date = $jsapi.dateForZone("Europe/Moscow","dd.MM");
             
-            var answer = "Вам не очень крупно повезло!"
+            var answer = "Вам крупно повезло."
             $reactions.answer(answer);
         a: Сегодня {{ $temp.date }} у нас скидка 5%
         
@@ -123,8 +116,13 @@ theme: /Travel
     
     state: Ticket
         intent!: /Ticket
-        a: Вы хотите купить билет!
-    
+        script:
+            log("ssssssssssssssssss" + toPrettyString($parseTree));
+            $session.departureCity = capitalize($nlp.inflect($parseTree._departure, "gent"));
+            $session.destinationCity = capitalize($nlp.inflect($parseTree._destination, "accs"));
+            $session.time = $parseTree._time.day + "/" + $parseTree._time.month + "/" + $parseTree._time.year;
+        a: Вы хотите купить билет из {{$session.departureCity}} в {{$session.destinationCity}} {{$session.time}}.
+        
     state: Match
         event!: match
-        a: Знаю-знаю: {{ $context.intent.answer }}
+        a: Знаю ответ:{{$context.intent.answer}}       
