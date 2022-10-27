@@ -6,6 +6,15 @@ require: patterns.sc
 
 require: localPatterns.sc
 
+require: dict/discount.yaml
+    var = discountInfo
+    
+require: city/cities-ru.csv
+    module = sys.zb-common
+    name = Cities
+    var = Cities
+    
+
 init:
     bind("postProcess", function($context){
         log("+++++++" + $context.currentState);
@@ -106,13 +115,28 @@ theme: /Discount
     
     state: Inform
         script:
-            $temp.date = $jsapi.dateForZone("Europe/Moscow","dd.MM");
-            
-            var answer = "Вам крупно повезло."
-            $reactions.answer(answer);
-        a: Сегодня {{ $temp.date }} у нас скидка 5%
-        
+            var dayOfWeek = $jsapi.dateForZone("Europe/Moscow","EEEE");
+            var discount = discountInfo[dayOfWeek];
+            if (discount) {
+                $temp.date = $jsapi.dateForZone("Europe/Moscow","dd.MM");
+                var answer = "Вам крупно повезло! Сегодня " + $temp.date + " действует скидка"
+                $reactions.answer(answer);
+                $reactions.answer(discount);
+            }
+        go!: /Travel/Departure
+
 theme: /Travel
+    
+    state: Departure
+        a: Укажите город отправления
+        
+        state: Get
+            q: * $City *
+            script:
+                log("@@@@@" + toPrettyString($parseTree.City));
+                var id = $parseTree.City[0].value;
+                $session.departureCity = Cities[id].value.name;
+            a: Отправляемся из города {{ $session.departureCity }}
     
     state: Ticket
         intent!: /Ticket
