@@ -31,6 +31,20 @@ init:
             
 theme: /
     
+    state: Proposal
+        q!: Предложение
+        script:
+            $temp.branch = $analytics.joinExperiment("Proposal")
+        a: {{ $temp.branch }}
+        if: $temp.branch === "A"
+            a: У нас выгодное предложение!
+            buttons:
+                "Воспользоваться предложением"
+        elseif: ($temp.branch === "B")
+            a: У нас выгодное предложение!
+        else:
+            a: Предложений тут нет!
+    
     state: Start
         q!: $regex</start>
         q: ($hi/$hello)
