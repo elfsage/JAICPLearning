@@ -115,6 +115,8 @@ theme: /Phone
             q: (да/давай/хорошо)
             script:
                 $client.phone = $session.probablyPhone;
+                $analytics.setSessionData("Номер телефона", $client.phone);
+                delete $session.probablyPhone;
             a: Хорошо
             go!: /Discount/Inform
             
