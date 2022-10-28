@@ -17,6 +17,18 @@
     "shared" : false
   },
   "intents" : [ {
+    "id" : 13191602,
+    "path" : "/Новый интент 1",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "спб"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "priority" : 0
+  }, {
     "id" : 13191586,
     "path" : "/пока",
     "enabled" : true,
@@ -352,16 +364,6 @@
       "refs" : [ ]
     },
     "patterns" : [ ],
-    "priority" : 0
-  }, {
-    "id" : 13191602,
-    "path" : "/Новый интент 1",
-    "enabled" : true,
-    "shared" : false,
-    "phrases" : [ ],
-    "classificationRules" : {
-      "refs" : [ ]
-    },
     "priority" : 0
   }, {
     "id" : 13191603,

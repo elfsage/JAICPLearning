@@ -79,7 +79,10 @@ theme: /Service
             
         state: Rejected
             q: (нет/не надо)
+            script:
+                $analytics.setSessionResult("Нихачу билетик");
             a: Боюсь, что ничего другого я пока предложить не могу.
+                
             
 theme: /Phone
     
@@ -157,6 +160,8 @@ theme: /Travel
                 log("///////////////////" + toPrettyString($parseTree.City));
                 $session.destinationCity = $parseTree._City;
             a: итак, город прибытия: {{$session.destinationCity.name}} 
+            script:
+                $analytics.setSessionResult("П-п-п-п-продано!");
             go!: /Weather/Current
             
     
