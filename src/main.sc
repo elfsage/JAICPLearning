@@ -57,6 +57,8 @@ theme: /
     
     state: NoMatch || noContext = true
         event!: noMatch
+        script:
+            $analytics.setMessageLabel("Не распознано", "Оценка");
         a: Простите, я не понял. Переформулируйте, пожалуйста, ваш запрос.
         go!: {{$session.lastState}}
         
